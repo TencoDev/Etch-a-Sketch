@@ -2,8 +2,30 @@ console.log("Hello World!");
 const container = document.querySelector(".container");
 const resetButton = document.querySelector("#reset-button");
 const resizeButton = document.querySelector("#resize-button");
+const randomColorButton = document.querySelector("#random-color-button")
+const toggleGridLinesButton = document.querySelector("#toggle-grid-lines-button");
+let randomColor = false
+let color = "Red"
 
 let gridSize = 16;
+
+function createGridItem(){
+    const gridItem = document.createElement("div");
+    gridItem.classList.add("grid-item");
+    gridItem.addEventListener("mouseover", () => {
+        if (randomColor){
+            color = getRandomColor()
+        }
+        gridItem.style.backgroundColor = color
+    });
+
+    return gridItem
+}
+
+for (let i=0; i<gridSize*gridSize; i++){
+    const gridItem  = createGridItem();
+    container.appendChild(gridItem);
+}
 
 function getRandomColor() {
     const r = Math.floor(Math.random() * 256); 
@@ -45,18 +67,17 @@ resizeButton.addEventListener("click", () => {
 
 })
 
-function createGridItem(){
-    const gridItem = document.createElement("div");
-    gridItem.classList.add("grid-item");
-    gridItem.addEventListener("mouseover", () => {
-        gridItem.style.backgroundColor = "Red"
+randomColorButton.addEventListener("click", () => {
+    randomColor = !randomColor;
+})
+
+let gridLinesVisible = true; // Boolean to track grid line visibility
+
+toggleGridLinesButton.addEventListener("click", () => {
+    console.log("Toggle Grid Lines button clicked!");
+    const gridItems = document.querySelectorAll(".grid-item");
+    gridLinesVisible = !gridLinesVisible; // Toggle the boolean
+    gridItems.forEach((gridItem) => {
+        gridItem.style.border = gridLinesVisible ? "1px solid black" : "none"; // Show or hide borders
     });
-
-    return gridItem
-}
-
-
-for (let i=0; i<gridSize*gridSize; i++){
-    const gridItem  = createGridItem();
-    container.appendChild(gridItem);
-}
+});
