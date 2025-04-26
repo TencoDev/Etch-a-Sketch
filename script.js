@@ -37,7 +37,6 @@ resizeButton.addEventListener("click", () => {
         container.appendChild(gridItem);
     }
 
-
 })
 
 function createGridItem(){
