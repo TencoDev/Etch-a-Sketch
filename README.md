@@ -1,6 +1,7 @@
 # Etch-a-Sketch 🎨
 
 A fun and interactive Etch-a-Sketch project built with **HTML**, **CSS**, and **JavaScript**. Create pixel art by hovering over the grid, toggle grid lines, and experiment with random colors!
+Live Demo at [Etch a Sketch](https://tencodev.github.io/Etch-a-Sketch/)
 
 ---
 
